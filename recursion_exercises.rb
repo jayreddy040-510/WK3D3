@@ -1,4 +1,4 @@
-require 'byebug'
+# require 'byebug'
 
 def range(start, last)
 
@@ -137,3 +137,19 @@ end
 # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+
+def merge()
+
+
+
+end
+
+def merge_sort(arr)
+    return arr if arr.length == 1
+    mid = arr.length/2
+    left = merge_sort(arr[0..mid])
+    right = merge_sort(arr[mid+1..-1])
+
+end
+
+p merge_sort([1, 2, 3])
