@@ -1,3 +1,5 @@
+require 'byebug'
+
 def range(start, last)
 
     return [] if last < start
@@ -37,14 +39,6 @@ end
 # exp(b, n) = b * exp(b, n - 1)
 
 
-# def deep_dup(arr)
-
-    
-#     arr.each do |sub|
-#         return arr.dup if !sub.is_a?(Array)
-    
-    
-# end
 
 
 
@@ -88,14 +82,58 @@ def deep_dup(data)
     #         dupped_arr << arr[i]
     #         deep_dup(arr[i + 1])
     #         i += 1
-    #     end
+    #     end 
     # end
 
     # dupped_arr
     
 # end
 
-robot_parts = [1, [2], [3, [4]]]
+# robot_parts = [1, [2], [3, [4]]]
 
 
-print deep_dup(robot_parts)
+# print deep_dup(robot_parts)
+
+# Fibonacci
+# Write a recursive and an iterative Fibonacci method. 
+# The method should take in an integer n and return the first n Fibonacci numbers in an array.
+
+# You shouldn't have to pass any arrays between methods; you should be able to do this 
+#just passing a single argument for the number of Fibonacci numbers requested.
+
+def fib_to_n(n)
+    return [] if n == 0 
+    return [0] if n == 1
+    return [0, 1] if n == 2
+
+   fibArr = fib_to_n(n - 1)
+
+   fibArr << fibArr[-1] + fibArr[-2]
+end
+
+
+# p fib_to_n(6)
+
+def bsearch(arr, target)
+    
+    mid = arr.length/2
+    debugger
+    if target == arr[mid] 
+        return mid
+    elsif target < arr[mid]
+        return bsearch(arr[0..(mid-1)], target)
+    elsif target > arr[mid]
+        return bsearch(arr[(mid+1)..-1], target) + 1 + mid
+    end
+    
+    return nil if arr.length == 1 && target != arr[0]
+    nil
+end
+
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# p bsearch([1, 3, 4, 5, 9], 5) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
