@@ -115,18 +115,18 @@ end
 # p fib_to_n(6)
 
 def bsearch(arr, target)
-    
+    return nil if arr.length == 1 && target != arr[0]
     mid = arr.length/2
-    debugger
+    # debugger
     if target == arr[mid] 
         return mid
     elsif target < arr[mid]
         return bsearch(arr[0..(mid-1)], target)
     elsif target > arr[mid]
+        return nil if bsearch(arr[(mid+1)..-1], target) == nil 
         return bsearch(arr[(mid+1)..-1], target) + 1 + mid
     end
     
-    return nil if arr.length == 1 && target != arr[0]
     nil
 end
 
@@ -136,4 +136,4 @@ end
 # p bsearch([1, 3, 4, 5, 9], 5) # => 3
 # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
