@@ -134,22 +134,46 @@ end
 # p bsearch([2, 3, 4, 5], 3) # => 1
 # p bsearch([2, 4, 6, 8, 10], 6) # => 2
 # p bsearch([1, 3, 4, 5, 9], 5) # => 3
-# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+# # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
-def merge()
+def merge(left, right)
+    
+    merged = []
+    
+    while !left.empty?
+        if left[0] > right[0]
+            merged << right.shift << left.shift
+        else
+            merged << left.shift << right.shift
+        end
+    end
 
-
+    merged += right
 
 end
+
+
+
+
 
 def merge_sort(arr)
+    # print arr
+    return [] if arr.length == 0
     return arr if arr.length == 1
+    # return [arr[0], arr[1]] if arr.length == 2
     mid = arr.length/2
-    left = merge_sort(arr[0..mid])
-    right = merge_sort(arr[mid+1..-1])
+    left = merge_sort(arr[0...mid])
+    right = merge_sort(arr[mid..-1])
+
+    if left.length == 1 && right.length == 1
+        merged = merge(left, right)
+        merge(merged, _______)
+    end
+
+   print left
 
 end
 
-p merge_sort([1, 2, 3])
+p merge_sort([4,5,6,7,2,3,4,14,15,2,7,5,3])
