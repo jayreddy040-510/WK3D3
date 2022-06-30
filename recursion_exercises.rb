@@ -142,20 +142,20 @@ def merge(left, right)
     
     merged = []
     
-    while !left.empty?
+    while left.length > 0 and right.length > 0
         if left[0] > right[0]
-            merged << right.shift << left.shift
+            merged << right.shift 
         else
-            merged << left.shift << right.shift
+            merged << left.shift
         end
     end
 
-    merged += right
+    merged + left + right
 
 end
 
 
-
+require "byebug"
 
 
 def merge_sort(arr)
@@ -164,16 +164,14 @@ def merge_sort(arr)
     return arr if arr.length == 1
     # return [arr[0], arr[1]] if arr.length == 2
     mid = arr.length/2
-    left = merge_sort(arr[0...mid])
-    right = merge_sort(arr[mid..-1])
-
-    if left.length == 1 && right.length == 1
-        merged = merge(left, right)
-        merge(merged, _______)
-    end
-
-   print left
+    # debugger
+    left = (arr[0...mid])
+    right = (arr[mid..-1])
+    x = merge_sort(left)
+    y = merge_sort(right) 
+    merge(x,y)
+   
 
 end
 
-p merge_sort([4,5,6,7,2,3,4,14,15,2,7,5,3])
+p merge_sort([4,5,6,7,2,3,4,14,128,124,23,44,56,32,15,2,7,5,3])
