@@ -3,9 +3,9 @@
 def range(start, last)
 
     return [] if last < start
-    return [last] if last == start
+    return [] if last == start
   
-        [start] + range(start+1,last) - [last]
+        [start] + range(start+1,last)
 
    
     
@@ -63,32 +63,6 @@ def deep_dup(data)
 
 
 
-
-
-
-
-
-
-    # dupped_arr = []
-    # i = 0
-    # while !arr.empty?
-    #     if arr[i].is_a?(Array)
-    #         arr[i].each do |ele|
-    #             dupped_arr << ele
-    #         end
-    #         i += 1
-    #         deep_dup(arr[i + 1])
-    #     else
-    #         dupped_arr << arr[i]
-    #         deep_dup(arr[i + 1])
-    #         i += 1
-    #     end 
-    # end
-
-    # dupped_arr
-    
-# end
-
 # robot_parts = [1, [2], [3, [4]]]
 
 
@@ -101,18 +75,43 @@ def deep_dup(data)
 # You shouldn't have to pass any arrays between methods; you should be able to do this 
 #just passing a single argument for the number of Fibonacci numbers requested.
 
+# def fib_to_n(n)
+#     return [] if n == 0 
+#     return [0] if n == 1
+#     return [0, 1] if n == 2
+
+#    fibArr = fib_to_n(n - 1)
+
+#    fibArr << fibArr[-1] + fibArr[-2]
+# end
+
+
 def fib_to_n(n)
-    return [] if n == 0 
+
+    return [] if n == 0
     return [0] if n == 1
-    return [0, 1] if n == 2
+    return [0,1] if n == 2
 
-   fibArr = fib_to_n(n - 1)
 
-   fibArr << fibArr[-1] + fibArr[-2]
+    fib_to_n(n-1) << (fib_to_n(n-1)[-1] + fib_to_n(n-1)[-2])
+    
+end
+
+def fast_fib_to_n(n)
+
+    return [] if n == 0
+    return [0] if n == 1
+    return [0,1] if n == 2
+
+    x = fib_to_n(n-1)
+    x << (x[-1] + x[-2])
+    
 end
 
 
-# p fib_to_n(6)
+
+# p fast_fib_to_n(15)
+# p fib_to_n(15)
 
 def bsearch(arr, target)
     return nil if arr.length == 1 && target != arr[0]
@@ -174,4 +173,4 @@ def merge_sort(arr)
 
 end
 
-p merge_sort([4,5,6,7,2,3,4,14,128,124,23,44,56,32,15,2,7,5,3])
+# p merge_sort([4,5,6,7,2,3,4,14,128,124,23,44,56,32,15,2,7,5,3])
